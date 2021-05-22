@@ -22,7 +22,7 @@ public final class Console {
 	/** Whether or not to show the thread in the debug information */
 	public static boolean showThread;
 	
-	public static final WarningType[] DISABLED_TYPES = { WarningType.RegisterDebug, WarningType.TextureDebug, WarningType.Debug };
+	public static WarningType[] disabledTypes = { WarningType.RegisterDebug, WarningType.TextureDebug, WarningType.Debug };
 	
 	/** Sets up a {@link PrintWriter} to save the console output to file.
 	 * Also automatically deletes any logs after
@@ -126,7 +126,7 @@ public final class Console {
 			return;
 		}
 		
-		for (WarningType t : DISABLED_TYPES) {
+		for (WarningType t : disabledTypes) {
 			if (t == type) {
 				return;
 			}

@@ -47,11 +47,7 @@ public class MathH {
 	}
 	
 	public static double roundTo(double number, int decimal) {
-		double tempDecimal = 1;
-		for (int i = 0; i < decimal; i++) {
-			tempDecimal *= 10;
-		}
-		
+		double tempDecimal = Math.pow(10, decimal);
 		return Math.round(number * tempDecimal) / tempDecimal;
 	}
 	
