@@ -116,9 +116,9 @@ public final class Console {
 	/** Prints date info plus the given string to the console Example: <p> [12:34:56:789] [Debug] [ExampleClass.exampleMethod.69] : Hello! 
 	 * @param type The type of warning to display. Defaults to {@link WarningType#Debug} if null
 	 * @param string The string to print
-	 * @param shouldThrow Whether or not to throw an exception
+	 * @param e {@link Exception} to throw
 	 */
-	public static void print(WarningType type, String string, boolean shouldThrow) {
+	public static void print(WarningType type, String string, Exception e) {
 		if (type == null) {
 			String msg = "[" + new SimpleDateFormat("hh:mm:ss:SSS").format(new Date()) + "] [Debug] [" + getCallerInfo(Console.class) + "] : " + string;
 			
@@ -142,11 +142,11 @@ public final class Console {
 			System.out.println(msg);
 		}
 		
-		if (shouldThrow) {
+		if (e != null) {
 			try {
-				throw new Exception(string);
-			} catch (Exception e) {
-				e.printStackTrace();
+				throw e;
+			} catch (Exception e0) {
+				e0.printStackTrace();
 			}
 		}
 	}
@@ -156,7 +156,7 @@ public final class Console {
 	 * @param string The string to print
 	 */
 	public static void print(WarningType type, String string) {
-		print(type, string, false);
+		print(type, string, null);
 	}
 	
 	/** Prints date info plus the given string to the console Example: <p> [12:34:56:789] [Debug] [ExampleClass.exampleMethod.69] : Hello! <br>

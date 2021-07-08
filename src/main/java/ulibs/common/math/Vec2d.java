@@ -3,7 +3,7 @@ package main.java.ulibs.common.math;
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
-public class Vec2d implements ICopyable<Vec2d> {
+public class Vec2d implements ICopyable<Vec2d>, IMath<Vec2d> {
 	protected double x, y;
 	
 	public Vec2d() {
@@ -33,6 +33,7 @@ public class Vec2d implements ICopyable<Vec2d> {
 		this(vec.getX(), vec.getY());
 	}
 	
+	@Override
 	public Vec2d add(Vec2d vec) {
 		this.x += vec.x;
 		this.y += vec.y;
@@ -55,6 +56,7 @@ public class Vec2d implements ICopyable<Vec2d> {
 		return this;
 	}
 	
+	@Override
 	public Vec2d subtract(Vec2d vec) {
 		this.x -= vec.x;
 		this.y -= vec.y;
@@ -77,6 +79,7 @@ public class Vec2d implements ICopyable<Vec2d> {
 		return this;
 	}
 	
+	@Override
 	public Vec2d multiply(Vec2d vec) {
 		this.x *= vec.x;
 		this.y *= vec.y;
@@ -99,6 +102,7 @@ public class Vec2d implements ICopyable<Vec2d> {
 		return this;
 	}
 	
+	@Override
 	public Vec2d divide(Vec2d vec) {
 		this.x /= vec.x;
 		this.y /= vec.y;
@@ -159,6 +163,7 @@ public class Vec2d implements ICopyable<Vec2d> {
 		return Math.abs(x - vec.x) + Math.abs(y - vec.y);
 	}
 	
+	@Override
 	public boolean isZero() {
 		return (x == 0 && y == 0) ? true : false;
 	}

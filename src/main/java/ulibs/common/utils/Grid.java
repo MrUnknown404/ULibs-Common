@@ -5,6 +5,8 @@ import java.util.List;
 import main.java.ulibs.common.helpers.CollectionsH;
 import main.java.ulibs.common.math.Vec2i;
 import main.java.ulibs.common.utils.Console.WarningType;
+import main.java.ulibs.common.utils.exceptions.GridException;
+import main.java.ulibs.common.utils.exceptions.GridException.Reason;
 
 public class Grid<T> {
 	private final List<T> grid;
@@ -92,16 +94,16 @@ public class Grid<T> {
 	
 	private boolean checkValid(int x, int y) throws Exception {
 		if (x < 0) {
-			Console.print(WarningType.Error, "'X' Cannot be lower than 0! (was " + x + ")", true);
+			Console.print(WarningType.Error, "'X' Cannot be lower than 0! (was " + x + ")", new GridException(this, Reason.lowX, x));
 			return false;
 		} else if (x >= width) {
-			Console.print(WarningType.Error, "'X' Cannot be " + width + " or above! (was " + x + ")", true);
+			Console.print(WarningType.Error, "'X' Cannot be " + width + " or above! (was " + x + ")", new GridException(this, Reason.highX, x));
 			return false;
 		} else if (y < 0) {
-			Console.print(WarningType.Error, "'Y' Cannot be lower than 0! (was " + y + ")", true);
+			Console.print(WarningType.Error, "'Y' Cannot be lower than 0! (was " + y + ")", new GridException(this, Reason.lowY, y));
 			return false;
 		} else if (y >= height) {
-			Console.print(WarningType.Error, "'Y' Cannot be " + height + " or above! (was " + y + ")", true);
+			Console.print(WarningType.Error, "'Y' Cannot be " + height + " or above! (was " + y + ")", new GridException(this, Reason.highY, y));
 			return false;
 		}
 		

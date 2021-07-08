@@ -3,7 +3,7 @@ package main.java.ulibs.common.math;
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
-public class Vec4i implements ICopyable<Vec4i> {
+public class Vec4i implements ICopyable<Vec4i>, IMath<Vec4i> {
 	protected int x, y, z, w;
 	
 	public Vec4i() {
@@ -39,6 +39,7 @@ public class Vec4i implements ICopyable<Vec4i> {
 		this(Math.round((float) vec.getX()), Math.round((float) vec.getY()), Math.round((float) vec.getZ()), Math.round((float) vec.getW()));
 	}
 	
+	@Override
 	public Vec4i add(Vec4i vec) {
 		this.x += vec.x;
 		this.y += vec.y;
@@ -75,6 +76,7 @@ public class Vec4i implements ICopyable<Vec4i> {
 		return this;
 	}
 	
+	@Override
 	public Vec4i subtract(Vec4i vec) {
 		this.x -= vec.x;
 		this.y -= vec.y;
@@ -111,6 +113,7 @@ public class Vec4i implements ICopyable<Vec4i> {
 		return this;
 	}
 	
+	@Override
 	public Vec4i multiply(Vec4i vec) {
 		this.x *= vec.x;
 		this.y *= vec.y;
@@ -147,6 +150,7 @@ public class Vec4i implements ICopyable<Vec4i> {
 		return this;
 	}
 	
+	@Override
 	public Vec4i divide(Vec4i vec) {
 		this.x /= vec.x;
 		this.y /= vec.y;
@@ -243,6 +247,7 @@ public class Vec4i implements ICopyable<Vec4i> {
 		return Math.abs(x - vec.x) + Math.abs(y - vec.y) + Math.abs(z - vec.z) + Math.abs(w - vec.w);
 	}
 	
+	@Override
 	public boolean isZero() {
 		return (x == 0 && y == 0 && z == 0 && w == 0) ? true : false;
 	}

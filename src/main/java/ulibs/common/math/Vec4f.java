@@ -3,7 +3,7 @@ package main.java.ulibs.common.math;
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
-public class Vec4f implements ICopyable<Vec4f> {
+public class Vec4f implements ICopyable<Vec4f>, IMath<Vec4f> {
 	protected float x, y, z, w;
 	
 	public Vec4f() {
@@ -39,6 +39,7 @@ public class Vec4f implements ICopyable<Vec4f> {
 		this((float) vec.getX(), (float) vec.getY(), (float) vec.getZ(), (float) vec.getW());
 	}
 	
+	@Override
 	public Vec4f add(Vec4f vec) {
 		this.x += vec.x;
 		this.y += vec.y;
@@ -75,6 +76,7 @@ public class Vec4f implements ICopyable<Vec4f> {
 		return this;
 	}
 	
+	@Override
 	public Vec4f subtract(Vec4f vec) {
 		this.x -= vec.x;
 		this.y -= vec.y;
@@ -111,6 +113,7 @@ public class Vec4f implements ICopyable<Vec4f> {
 		return this;
 	}
 	
+	@Override
 	public Vec4f multiply(Vec4f vec) {
 		this.x *= vec.x;
 		this.y *= vec.y;
@@ -147,6 +150,7 @@ public class Vec4f implements ICopyable<Vec4f> {
 		return this;
 	}
 	
+	@Override
 	public Vec4f divide(Vec4f vec) {
 		this.x /= vec.x;
 		this.y /= vec.y;
@@ -243,6 +247,7 @@ public class Vec4f implements ICopyable<Vec4f> {
 		return Math.abs(x - vec.x) + Math.abs(y - vec.y) + Math.abs(z - vec.z) + Math.abs(w - vec.w);
 	}
 	
+	@Override
 	public boolean isZero() {
 		return (x == 0 && y == 0 && z == 0 && w == 0) ? true : false;
 	}

@@ -3,7 +3,7 @@ package main.java.ulibs.common.math;
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
-public class Vec3i implements ICopyable<Vec3i> {
+public class Vec3i implements ICopyable<Vec3i>, IMath<Vec3i> {
 	protected int x, y, z;
 	
 	public Vec3i() {
@@ -36,6 +36,7 @@ public class Vec3i implements ICopyable<Vec3i> {
 		this(Math.round((float) vec.getX()), Math.round((float) vec.getY()), Math.round((float) vec.getZ()));
 	}
 	
+	@Override
 	public Vec3i add(Vec3i vec) {
 		this.x += vec.x;
 		this.y += vec.y;
@@ -65,6 +66,7 @@ public class Vec3i implements ICopyable<Vec3i> {
 		return this;
 	}
 	
+	@Override
 	public Vec3i subtract(Vec3i vec) {
 		this.x -= vec.x;
 		this.y -= vec.y;
@@ -94,6 +96,7 @@ public class Vec3i implements ICopyable<Vec3i> {
 		return this;
 	}
 	
+	@Override
 	public Vec3i multiply(Vec3i vec) {
 		this.x *= vec.x;
 		this.y *= vec.y;
@@ -123,6 +126,7 @@ public class Vec3i implements ICopyable<Vec3i> {
 		return this;
 	}
 	
+	@Override
 	public Vec3i divide(Vec3i vec) {
 		this.x /= vec.x;
 		this.y /= vec.y;
@@ -201,6 +205,7 @@ public class Vec3i implements ICopyable<Vec3i> {
 		return Math.abs(x - vec.x) + Math.abs(y - vec.y) + Math.abs(z - vec.z);
 	}
 	
+	@Override
 	public boolean isZero() {
 		return (x == 0 && y == 0 && z == 0) ? true : false;
 	}
