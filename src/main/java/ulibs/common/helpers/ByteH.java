@@ -42,6 +42,24 @@ public class ByteH {
 		return ByteBuffer.allocate(2).putShort(data).array();
 	}
 	
+	public static String getString(byte[] bytes) {
+		StringBuilder sb = new StringBuilder();
+		for (byte b : bytes) {
+			sb.append((char) b);
+		}
+		return sb.toString();
+	}
+	
+	public static byte[] getBytes(String data) {
+		byte[] bytes = new byte[data.length()];
+		char[] chars = data.toCharArray();
+		for (int i = 0; i < chars.length; i++) {
+			bytes[i] = (byte) chars[i];
+		}
+		
+		return bytes;
+	}
+	
 	public static byte[] combineBytes(byte b1, byte b2, byte... b3) {
 		ByteBuffer buff = ByteBuffer.wrap(new byte[2 + b3.length]);
 		buff.put(b1);
