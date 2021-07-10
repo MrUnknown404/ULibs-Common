@@ -30,6 +30,18 @@ public class ByteH {
 		return ByteBuffer.allocate(4).putFloat(data).array();
 	}
 	
+	public static short getShort(byte[] bytes) throws ByteException {
+		if (bytes.length != 2) {
+			throw new ByteException(Reason.wrong_size);
+		}
+		
+		return ByteBuffer.wrap(bytes).getShort();
+	}
+	
+	public static byte[] getBytes(short data) {
+		return ByteBuffer.allocate(2).putShort(data).array();
+	}
+	
 	public static byte[] combineBytes(byte b1, byte b2, byte... b3) {
 		ByteBuffer buff = ByteBuffer.wrap(new byte[2 + b3.length]);
 		buff.put(b1);
