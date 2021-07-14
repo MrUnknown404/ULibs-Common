@@ -33,12 +33,14 @@ public final class Console {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss-SSS");
 		String curDate = sdf.format(new Date());
 		
+		final int logSize = 31;
+		
 		if (!logFolder.exists()) {
 			logFolder.mkdirs();
 		} else {
 			int curAmount = 0;
 			for (File f : logFolder.listFiles()) {
-				if (f.getName().endsWith(".log") && f.getName().length() == 20) {
+				if (f.getName().endsWith(".log") && f.getName().length() == logSize) {
 					try {
 						sdf.parse(f.getName().substring(4, f.getName().length() - 4));
 						curAmount++;
@@ -48,11 +50,13 @@ public final class Console {
 				}
 			}
 			
+			System.out.println(curAmount);
+			
 			if (curAmount >= maxAmountOfLogs) {
 				while (curAmount >= maxAmountOfLogs) {
 					File oldest = null;
 					for (File f : logFolder.listFiles()) {
-						if (f.getName().endsWith(".log") && f.getName().length() == 20) {
+						if (f.getName().endsWith(".log") && f.getName().length() == logSize) {
 							try {
 								Date d = sdf.parse(f.getName().substring(4, f.getName().length() - 4));
 								
@@ -75,7 +79,7 @@ public final class Console {
 					
 					curAmount = 0;
 					for (File f : logFolder.listFiles()) {
-						if (f.getName().endsWith(".log") && f.getName().length() == 20) {
+						if (f.getName().endsWith(".log") && f.getName().length() == logSize) {
 							try {
 								sdf.parse(f.getName().substring(4, f.getName().length() - 4));
 								curAmount++;
