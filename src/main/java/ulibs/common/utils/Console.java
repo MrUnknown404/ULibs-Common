@@ -50,8 +50,6 @@ public final class Console {
 				}
 			}
 			
-			System.out.println(curAmount);
-			
 			if (curAmount >= maxAmountOfLogs) {
 				while (curAmount >= maxAmountOfLogs) {
 					File oldest = null;
