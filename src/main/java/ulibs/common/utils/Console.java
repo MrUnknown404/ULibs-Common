@@ -22,6 +22,7 @@ public final class Console {
 	/** Whether or not to show the thread in the debug information */
 	public static boolean showThread;
 	
+	/** Anything in this area will not be printed to log or console! */
 	public static WarningType[] disabledTypes = { WarningType.RegisterDebug, WarningType.TextureDebug, WarningType.Debug };
 	
 	/** Sets up a {@link PrintWriter} to save the console output to file.
@@ -122,9 +123,7 @@ public final class Console {
 	 */
 	public static void print(WarningType type, String string, Exception e) {
 		if (type == null) {
-			String msg = "[" + new SimpleDateFormat("hh:mm:ss:SSS").format(new Date()) + "] [Debug] [" + getCallerInfo(Console.class) + "] : " + string;
-			
-			System.out.println(msg);
+			System.out.println(getHeader(WarningType.Debug) + string);
 			return;
 		}
 		
@@ -135,13 +134,9 @@ public final class Console {
 		}
 		
 		if (type == WarningType.Error || type == WarningType.FatalError) {
-			String msg = "[" + new SimpleDateFormat("hh:mm:ss:SSS").format(new Date()) + "]" + (showThread ? " [T/" + Thread.currentThread().getName() + "] " : " ") + "[" +
-					type.toString() + "] [" + getCallerInfo(Console.class) + "] : " + string;
-			System.err.println(msg);
+			System.err.println(getHeader(WarningType.Debug) + string);
 		} else {
-			String msg = "[" + new SimpleDateFormat("hh:mm:ss:SSS").format(new Date()) + "]" + (showThread ? " [T/" + Thread.currentThread().getName() + "] " : " ") + "[" +
-					type.toString() + "] [" + getCallerInfo(Console.class) + "] : " + string;
-			System.out.println(msg);
+			System.out.println(getHeader(WarningType.Debug) + string);
 		}
 		
 		if (e != null) {
@@ -167,6 +162,11 @@ public final class Console {
 	 */
 	public static void print(String string) {
 		print(null, string);
+	}
+	
+	private static String getHeader(WarningType type) {
+		return "[" + new SimpleDateFormat("hh:mm:ss:SSS").format(new Date()) + "]" + (showThread ? " [T/" + Thread.currentThread().getName() + "] " : " ") + "[" + type.toString() +
+				"] [" + getCallerInfo(Console.class) + "] : ";
 	}
 	
 	private static String getCallerInfo(Class<?> clazz) {

@@ -1,5 +1,6 @@
 package main.java.ulibs.common.helpers;
 
+import java.math.BigDecimal;
 import java.util.Random;
 
 import main.java.ulibs.common.utils.Console;
@@ -28,14 +29,6 @@ public class MathH {
 		return value > i ? i + 1 : i;
 	}
 	
-	public static int fClamp(double num, double min, double max) {
-		return floor(clamp(num, min, max));
-	}
-	
-	public static int fClamp(float num, float min, float max) {
-		return floor(clamp(num, min, max));
-	}
-	
 	public static double clamp(double num, double min, double max) {
 		return num < min ? min : (num > max ? max : num);
 	}
@@ -45,7 +38,11 @@ public class MathH {
 	}
 	
 	public static int clamp(int num, int min, int max) {
-		return fClamp(num, min, max);
+		return num < min ? min : (num > max ? max : num);
+	}
+	
+	public static long clamp(long num, long min, long max) {
+		return num < min ? min : (num > max ? max : num);
 	}
 	
 	public static double roundTo(double number, int decimal) {
@@ -82,6 +79,30 @@ public class MathH {
 		return (number - min) / (max - min);
 	}
 	
+	public static float normalize(int number, int min, int max) {
+		if (number > max) {
+			Console.print(Console.WarningType.Error, "the specified number is more than the specified max!", new Exception());
+			return max;
+		} else if (number < min) {
+			Console.print(Console.WarningType.Error, "the specified number cannot be less than the specified min!", new Exception());
+			return 0;
+		}
+		
+		return new BigDecimal((number - min)).divide(new BigDecimal((max - min))).floatValue();
+	}
+	
+	public static double normalize(long number, long min, long max) {
+		if (number > max) {
+			Console.print(Console.WarningType.Error, "the specified number is more than the specified max!", new Exception());
+			return max;
+		} else if (number < min) {
+			Console.print(Console.WarningType.Error, "the specified number cannot be less than the specified min!", new Exception());
+			return 0;
+		}
+		
+		return new BigDecimal((number - min)).divide(new BigDecimal((max - min))).doubleValue();
+	}
+	
 	public static double percentage(double number, double max) {
 		return (number / max) * 100d;
 	}
@@ -89,4 +110,13 @@ public class MathH {
 	public static float percentage(float number, float max) {
 		return (number / max) * 100f;
 	}
+	
+	public static float percentage(int number, int max) {
+		return ((float) number / (float) max) * 100f;
+	}
+	
+	public static double percentage(long number, long max) {
+		return ((double) number / (double) max) * 100d;
+	}
+	
 }

@@ -30,14 +30,26 @@ public class Grid<T> {
 		this(null, vec.getX(), vec.getY());
 	}
 	
+	/**
+	 * @return a {@link List} of all the objects stored inside the grid
+	 */
 	public List<T> getAsList() {
 		return grid;
 	}
 	
+	/**
+	 * @param vec The position to get
+	 * @return an Object at the given position
+	 */
 	public T get(Vec2i vec) {
 		return get(vec.getX(), vec.getY());
 	}
 	
+	/** Returns the Object at the given position
+	 * @param x The X position to get
+	 * @param y The Y position to get
+	 * @return an Object at the given position
+	 */
 	public T get(int x, int y) {
 		try {
 			return checkValid(x, y) ? grid.get(x + (y * width)) : null;
@@ -115,6 +127,7 @@ public class Grid<T> {
 		return grid.size();
 	}
 	
+	/** @return Returns a boolean depending on whether or not the grid is empty! */
 	public boolean isEmpty() {
 		return grid.size() == 0;
 	}
