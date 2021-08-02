@@ -57,6 +57,31 @@ public class ByteH {
 	}
 	
 	/**
+	 * @param bytes The bytes to get a double from. The array should only be 8 long as doubles are only 8 bytes
+	 * @return Returns an double from the bytes
+	 * @throws ByteException Thrown if the given bytes size does not equal 8
+	 * @see Double
+	 * @see Byte
+	 */
+	public static double getDouble(byte[] bytes) throws ByteException {
+		if (bytes.length != 8) {
+			throw new ByteException(Reason.wrong_size);
+		}
+		
+		return ByteBuffer.wrap(bytes).getDouble();
+	}
+	
+	/**
+	 * @param data The double to turn into bytes
+	 * @return Returns a byte array that's always 8 long
+	 * @see Double
+	 * @see Byte
+	 */
+	public static byte[] getBytes(double data) {
+		return ByteBuffer.allocate(8).putDouble(data).array();
+	}
+	
+	/**
 	 * @param bytes The bytes to get a short from. The array should only be 4 long as shorts are only 2 bytes
 	 * @return Returns an short from the bytes
 	 * @throws ByteException Thrown if the given bytes size does not equal 2
