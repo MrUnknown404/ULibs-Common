@@ -33,7 +33,6 @@ public class WordsH {
 				wrappedLine.append(str, offset, spaceToWrapAt);
 				wrappedLine.append(newLineStr);
 				offset = spaceToWrapAt + 1;
-				
 			} else {
 				if (wrapLongWords) {
 					wrappedLine.append(str, offset, wrapLength + offset);

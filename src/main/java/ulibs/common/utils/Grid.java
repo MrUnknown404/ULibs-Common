@@ -91,6 +91,29 @@ public class Grid<T> {
 		return this;
 	}
 	
+	/**
+	 * @param g The Grid to check
+	 * @return True if the given Grid contains the same elements, Otherwise false
+	 */
+	public boolean is(Grid<T> g) {
+		if (g.width != width || g.height != height) {
+			return false;
+		}
+		
+		for (int y = 0; y < width; y++) {
+			for (int x = 0; x < width; x++) {
+				T g0 = get(x, y), g1 = g.get(x, y);
+				if (g0 == g1 || (g0 != null && g0.equals(g1))) {
+					continue;
+				}
+				
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
 	public Grid<T> addFirstEmpty(T t) {
 		if (grid.indexOf(null) != -1) {
 			grid.set(grid.indexOf(null), t);

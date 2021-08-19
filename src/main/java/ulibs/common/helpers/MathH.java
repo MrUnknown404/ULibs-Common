@@ -119,4 +119,19 @@ public class MathH {
 		return ((double) number / (double) max) * 100d;
 	}
 	
+	public static boolean within(double value, double min, double max) {
+		return value >= min && value <= max;
+	}
+	
+	public static boolean within(float value, float min, float max) {
+		return value >= min && value <= max;
+	}
+	
+	public static boolean within(int value, int min, int max) {
+		return value >= min && value <= max;
+	}
+	
+	public static boolean within(long value, long min, long max) {
+		return value >= min && value <= max;
+	}
 }
