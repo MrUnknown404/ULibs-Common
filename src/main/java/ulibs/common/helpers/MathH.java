@@ -1,6 +1,5 @@
 package main.java.ulibs.common.helpers;
 
-import java.math.BigDecimal;
 import java.util.Random;
 
 import main.java.ulibs.common.utils.Console;
@@ -88,7 +87,7 @@ public class MathH {
 			return 0;
 		}
 		
-		return new BigDecimal((number - min)).divide(new BigDecimal((max - min))).floatValue();
+		return (float) (number - min) / (float) (max - min);
 	}
 	
 	public static double normalize(long number, long min, long max) {
@@ -100,7 +99,7 @@ public class MathH {
 			return 0;
 		}
 		
-		return new BigDecimal((number - min)).divide(new BigDecimal((max - min))).doubleValue();
+		return (double) (number - min) / (double) (max - min);
 	}
 	
 	public static double percentage(double number, double max) {
