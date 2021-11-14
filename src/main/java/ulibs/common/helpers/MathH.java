@@ -8,6 +8,14 @@ import main.java.ulibs.common.utils.Console;
 public class MathH {
 	public static final Random RANDOM = new Random();
 	
+	public static boolean randomBoolean() {
+		return RANDOM.nextBoolean();
+	}
+	
+	public static int randomInt(int bound) {
+		return RANDOM.nextInt(bound);
+	}
+	
 	public static int floor(double value) {
 		int i = (int) value;
 		return value < i ? i - 1 : i;
