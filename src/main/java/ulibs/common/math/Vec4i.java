@@ -1,5 +1,7 @@
 package main.java.ulibs.common.math;
 
+import java.util.Objects;
+
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
@@ -269,12 +271,7 @@ public class Vec4i implements ICopyable<Vec4i>, IMath<Vec4i> {
 	
 	@Override
 	public int hashCode() {
-		int result = 1;
-		result = 31 * result + x;
-		result = 31 * result + y;
-		result = 31 * result + z;
-		result = 31 * result + w;
-		return result;
+		return Objects.hash(x, y, z, w);
 	}
 	
 	@Override

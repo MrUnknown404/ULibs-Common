@@ -1,5 +1,7 @@
 package main.java.ulibs.common.math;
 
+import java.util.Objects;
+
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
@@ -227,15 +229,7 @@ public class Vec3d implements ICopyable<Vec3d>, IMath<Vec3d> {
 	
 	@Override
 	public int hashCode() {
-		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(x);
-		result = 31 * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(y);
-		result = 31 * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(z);
-		result = 31 * result + (int) (temp ^ (temp >>> 32));
-		return result;
+		return Objects.hash(x, y, z);
 	}
 	
 	@Override
