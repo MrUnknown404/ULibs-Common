@@ -28,9 +28,13 @@ public final class Console {
 	/** Sets up a {@link PrintWriter} to save the console output to file.
 	 * Also automatically deletes any logs after
 	 * @param logFolder The folder to write logs to
-	 * @param maxAmountOfLogs The amount of logs to keep
+	 * @param maxAmountOfLogs The amount of logs to keep. If 0 will disable writing log to file
 	 */
 	public static void setupLogFile(File logFolder, int maxAmountOfLogs) {
+		if (maxAmountOfLogs == 0) {
+			return;
+		}
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss-SSS");
 		String curDate = sdf.format(new Date());
 		
