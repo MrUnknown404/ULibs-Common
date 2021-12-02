@@ -199,6 +199,7 @@ public class Vec3i implements ICopyable<Vec3i>, IMath<Vec3i> {
 		return z;
 	}
 	
+	@Override
 	public Vec3i inverse() {
 		return new Vec3i(-x, -y, -z);
 	}

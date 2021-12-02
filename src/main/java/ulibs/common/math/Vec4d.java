@@ -241,6 +241,7 @@ public class Vec4d implements ICopyable<Vec4d>, IMath<Vec4d> {
 		return w;
 	}
 	
+	@Override
 	public Vec4d inverse() {
 		return new Vec4d(-x, -y, -z, -w);
 	}

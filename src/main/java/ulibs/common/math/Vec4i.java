@@ -241,6 +241,7 @@ public class Vec4i implements ICopyable<Vec4i>, IMath<Vec4i> {
 		return w;
 	}
 	
+	@Override
 	public Vec4i inverse() {
 		return new Vec4i(-x, -y, -z, -w);
 	}

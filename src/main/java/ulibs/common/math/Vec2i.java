@@ -157,6 +157,7 @@ public class Vec2i implements ICopyable<Vec2i>, IMath<Vec2i> {
 		return y;
 	}
 	
+	@Override
 	public Vec2i inverse() {
 		return new Vec2i(-x, -y);
 	}
