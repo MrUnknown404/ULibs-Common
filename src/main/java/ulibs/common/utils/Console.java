@@ -138,9 +138,9 @@ public final class Console {
 		}
 		
 		if (type == WarningType.Error || type == WarningType.FatalError) {
-			System.err.println(getHeader(WarningType.Debug) + string);
+			System.err.println(getHeader(type) + string);
 		} else {
-			System.out.println(getHeader(WarningType.Debug) + string);
+			System.out.println(getHeader(type) + string);
 		}
 		
 		if (e != null) {
