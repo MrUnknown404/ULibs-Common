@@ -169,8 +169,8 @@ public final class Console {
 	}
 	
 	private static String getHeader(WarningType type) {
-		return "[" + new SimpleDateFormat("hh:mm:ss:SSS").format(new Date()) + "]" + (showThread ? " [T/" + Thread.currentThread().getName() + "] " : " ") + "[" + type.toString() +
-				"] [" + getCallerInfo(Console.class) + "] : ";
+		return "[" + new SimpleDateFormat("hh:mm:ss:SSS").format(new Date()) + "]" + (showThread ? " [T/" + Thread.currentThread().getName() + "] " : " ") + "[" +
+				type.toString() + "] [" + getCallerInfo(Console.class) + "] : ";
 	}
 	
 	private static String getCallerInfo(Class<?> clazz) {
