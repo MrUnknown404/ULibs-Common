@@ -10,7 +10,7 @@ import main.java.ulibs.common.utils.exceptions.GridException.Reason;
 
 public class Grid<T> {
 	private final List<T> grid;
-	private final int width, height;
+	protected final int width, height;
 	
 	public Grid(T t, int width, int height) {
 		this.width = width;
@@ -59,11 +59,21 @@ public class Grid<T> {
 		return null;
 	}
 	
+	@Deprecated
 	public Grid<T> add(T t, Vec2i vec) {
-		return add(t, vec.getX(), vec.getY());
+		return set(t, vec.getX(), vec.getY());
 	}
 	
+	@Deprecated
 	public Grid<T> add(T t, int x, int y) {
+		return set(t, x, y);
+	}
+	
+	public Grid<T> set(T t, Vec2i vec) {
+		return set(t, vec.getX(), vec.getY());
+	}
+	
+	public Grid<T> set(T t, int x, int y) {
 		try {
 			if (checkValid(x, y)) {
 				grid.set(y * width + x, t);
@@ -115,16 +125,20 @@ public class Grid<T> {
 	}
 	
 	public Grid<T> addFirstEmpty(T t) {
-		if (grid.indexOf(null) != -1) {
-			grid.set(grid.indexOf(null), t);
+		if (grid.indexOf(whatIsEmpty()) != -1) {
+			grid.set(grid.indexOf(whatIsEmpty()), t);
 			return this;
-		} else if (grid.indexOf("") != -1) {
+		} else if (t instanceof String && grid.indexOf("") != -1) {
 			grid.set(grid.indexOf(""), t);
 			return this;
 		}
 		
 		Console.print(WarningType.Warning, "Could not find any null or empty values!");
 		return this;
+	}
+	
+	protected T whatIsEmpty() {
+		return null;
 	}
 	
 	private boolean checkValid(int x, int y) throws Exception {

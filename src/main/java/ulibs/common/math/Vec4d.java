@@ -252,7 +252,7 @@ public class Vec4d implements ICopyable<Vec4d>, IMath<Vec4d> {
 	
 	@Override
 	public boolean isZero() {
-		return (x == 0 && y == 0 && z == 0 && w == 0) ? true : false;
+		return x == 0 && y == 0 && z == 0 && w == 0;
 	}
 	
 	@Override

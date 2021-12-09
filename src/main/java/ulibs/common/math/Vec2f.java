@@ -168,7 +168,7 @@ public class Vec2f implements ICopyable<Vec2f>, IMath<Vec2f> {
 	
 	@Override
 	public boolean isZero() {
-		return (x == 0 && y == 0) ? true : false;
+		return x == 0 && y == 0;
 	}
 	
 	@Override

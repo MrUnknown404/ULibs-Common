@@ -210,7 +210,7 @@ public class Vec3d implements ICopyable<Vec3d>, IMath<Vec3d> {
 	
 	@Override
 	public boolean isZero() {
-		return (x == 0 && y == 0 && z == 0) ? true : false;
+		return x == 0 && y == 0 && z == 0;
 	}
 	
 	@Override
