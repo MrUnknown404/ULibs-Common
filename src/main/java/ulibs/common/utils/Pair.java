@@ -1,5 +1,7 @@
 package main.java.ulibs.common.utils;
 
+import java.util.Objects;
+
 public class Pair<L, R> {
 	private L left;
 	private R right;
@@ -47,13 +49,9 @@ public class Pair<L, R> {
 	
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((left == null) ? 0 : left.hashCode());
-		result = prime * result + ((right == null) ? 0 : right.hashCode());
-		return result;
+		return Objects.hash(left, right);
 	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -82,7 +80,7 @@ public class Pair<L, R> {
 		
 		return true;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "(" + left + ", " + right + ")";

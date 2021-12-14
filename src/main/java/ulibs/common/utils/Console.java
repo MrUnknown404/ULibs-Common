@@ -17,6 +17,10 @@ import java.util.Date;
  * @author -Unknown-
  */
 public final class Console {
+	private Console() {
+		
+	}
+	
 	private static PrintWriter prt;
 	
 	/** Whether or not to show the thread in the debug information */

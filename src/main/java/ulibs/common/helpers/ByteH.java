@@ -5,6 +5,10 @@ import java.nio.ByteBuffer;
 import main.java.ulibs.common.utils.exceptions.ByteException;
 import main.java.ulibs.common.utils.exceptions.ByteException.Reason;
 
+/**
+ * Simple class used for converting objects into bytes and bytes into objects
+ * @author -Unknown-
+ */
 public class ByteH {
 	/**
 	 * @param bytes The bytes to get an int from. The array should only be 4 long as Integers are only 4 bytes
@@ -138,6 +142,37 @@ public class ByteH {
 		return bytes;
 	}
 	
+	/**
+	 * @param bytes The bytes to get a long from. The array should only be 8 long as Longs are only 8 bytes
+	 * @return Returns a Long from the bytes
+	 * @throws ByteException Thrown if the given bytes size does not equal 8
+	 * @see Long
+	 * @see Byte
+	 */
+	public static long getLong(byte[] bytes) throws ByteException {
+		if (bytes.length != 8) {
+			throw new ByteException(Reason.wrong_size);
+		}
+		
+		return ByteBuffer.wrap(bytes).getLong();
+	}
+	
+	/**
+	 * @param data The long to turn into bytes
+	 * @return Returns a byte array that's always 8 long
+	 * @see Long
+	 * @see Byte
+	 */
+	public static byte[] getBytes(long data) {
+		return ByteBuffer.allocate(8).putLong(data).array();
+	}
+	
+	/** Combines all the given bytes into a singular byte array
+	 * @param b1 Byte 1
+	 * @param b2 Byte 2
+	 * @param b3 Byte 3+ (Optional)
+	 * @return A single byte array with the contents of all the provided bytes
+	 */
 	public static byte[] combineBytes(byte b1, byte b2, byte... b3) {
 		ByteBuffer buff = ByteBuffer.wrap(new byte[2 + b3.length]);
 		buff.put(b1);
@@ -149,6 +184,12 @@ public class ByteH {
 		return buff.array();
 	}
 	
+	/** Combines all the given byte arrays into a singular byte array
+	 * @param b1 Array 1
+	 * @param b2 Array 2
+	 * @param b3 Array 3+ (Optional)
+	 * @return A single byte array with the contents of all the provided arrays
+	 */
 	public static byte[] combineBytes(byte[] b1, byte[] b2, byte[]... b3) {
 		int size = b1.length + b2.length;
 		for (byte[] b : b3) {
