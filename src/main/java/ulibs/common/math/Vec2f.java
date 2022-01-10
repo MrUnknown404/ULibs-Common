@@ -127,6 +127,7 @@ public class Vec2f implements ICopyable<Vec2f>, IMath<Vec2f> {
 		return this;
 	}
 	
+	@Override
 	public Vec2f set(Vec2f vec) {
 		this.x = vec.x;
 		this.y = vec.y;

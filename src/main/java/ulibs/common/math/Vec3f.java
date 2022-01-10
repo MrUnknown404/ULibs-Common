@@ -158,6 +158,7 @@ public class Vec3f implements ICopyable<Vec3f>, IMath<Vec3f> {
 		return this;
 	}
 	
+	@Override
 	public Vec3f set(Vec3f vec) {
 		this.x = vec.x;
 		this.y = vec.y;

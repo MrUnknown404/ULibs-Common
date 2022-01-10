@@ -189,6 +189,7 @@ public class Vec4i implements ICopyable<Vec4i>, IMath<Vec4i> {
 		return this;
 	}
 	
+	@Override
 	public Vec4i set(Vec4i vec) {
 		this.x = vec.x;
 		this.y = vec.y;
