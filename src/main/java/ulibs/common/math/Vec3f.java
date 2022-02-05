@@ -5,7 +5,7 @@ import java.util.Objects;
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
-public class Vec3f implements ICopyable<Vec3f>, IMath<Vec3f> {
+public class Vec3f implements ICopyable<Vec3f>, IMath<Vec3f>, IVec3 {
 	protected float x, y, z;
 	
 	public Vec3f() {
@@ -26,16 +26,8 @@ public class Vec3f implements ICopyable<Vec3f>, IMath<Vec3f> {
 		this.z = xyz;
 	}
 	
-	public Vec3f(Vec3i vec) {
-		this(vec.getX(), vec.getY(), vec.getZ());
-	}
-	
-	public Vec3f(Vec3f vec) {
-		this(vec.getX(), vec.getY(), vec.getZ());
-	}
-	
-	public Vec3f(Vec3d vec) {
-		this((float) vec.getX(), (float) vec.getY(), (float) vec.getZ());
+	public Vec3f(IVec3 vec) {
+		this(vec.xFloat(), vec.yFloat(), vec.zFloat());
 	}
 	
 	@Override
@@ -217,6 +209,51 @@ public class Vec3f implements ICopyable<Vec3f>, IMath<Vec3f> {
 	@Override
 	public Vec3f copy() {
 		return new Vec3f(this);
+	}
+	
+	@Override
+	public int xInt() {
+		return Math.round(x);
+	}
+	
+	@Override
+	public float xFloat() {
+		return x;
+	}
+	
+	@Override
+	public double xDouble() {
+		return x;
+	}
+	
+	@Override
+	public int yInt() {
+		return Math.round(y);
+	}
+	
+	@Override
+	public float yFloat() {
+		return y;
+	}
+	
+	@Override
+	public double yDouble() {
+		return y;
+	}
+	
+	@Override
+	public int zInt() {
+		return Math.round(z);
+	}
+	
+	@Override
+	public float zFloat() {
+		return z;
+	}
+	
+	@Override
+	public double zDouble() {
+		return z;
 	}
 	
 	@Override

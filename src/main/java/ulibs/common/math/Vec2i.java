@@ -5,7 +5,7 @@ import java.util.Objects;
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
-public class Vec2i implements ICopyable<Vec2i>, IMath<Vec2i> {
+public class Vec2i implements ICopyable<Vec2i>, IMath<Vec2i>, IVec2 {
 	protected int x, y;
 	
 	public Vec2i() {
@@ -23,16 +23,8 @@ public class Vec2i implements ICopyable<Vec2i>, IMath<Vec2i> {
 		this.y = xy;
 	}
 	
-	public Vec2i(Vec2i vec) {
-		this(vec.getX(), vec.getY());
-	}
-	
-	public Vec2i(Vec2f vec) {
-		this(Math.round(vec.getX()), Math.round(vec.getY()));
-	}
-	
-	public Vec2i(Vec2d vec) {
-		this(Math.round((float) vec.getX()), Math.round((float) vec.getY()));
+	public Vec2i(IVec2 vec) {
+		this(vec.xInt(), vec.yInt());
 	}
 	
 	@Override
@@ -170,6 +162,36 @@ public class Vec2i implements ICopyable<Vec2i>, IMath<Vec2i> {
 	@Override
 	public boolean isZero() {
 		return x == 0 && y == 0;
+	}
+	
+	@Override
+	public int xInt() {
+		return x;
+	}
+	
+	@Override
+	public float xFloat() {
+		return x;
+	}
+	
+	@Override
+	public double xDouble() {
+		return x;
+	}
+	
+	@Override
+	public int yInt() {
+		return y;
+	}
+	
+	@Override
+	public float yFloat() {
+		return y;
+	}
+	
+	@Override
+	public double yDouble() {
+		return y;
 	}
 	
 	@Override

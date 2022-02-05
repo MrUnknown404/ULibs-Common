@@ -5,7 +5,7 @@ import java.util.Objects;
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
-public class Vec4d implements ICopyable<Vec4d>, IMath<Vec4d> {
+public class Vec4d implements ICopyable<Vec4d>, IMath<Vec4d>, IVec4 {
 	protected double x, y, z, w;
 	
 	public Vec4d() {
@@ -29,16 +29,8 @@ public class Vec4d implements ICopyable<Vec4d>, IMath<Vec4d> {
 		this.w = xyzw;
 	}
 	
-	public Vec4d(Vec4i vec) {
-		this(vec.getX(), vec.getY(), vec.getZ(), vec.getW());
-	}
-	
-	public Vec4d(Vec4f vec) {
-		this(vec.getX(), vec.getY(), vec.getZ(), vec.getW());
-	}
-	
-	public Vec4d(Vec4d vec) {
-		this(vec.getX(), vec.getY(), vec.getZ(), vec.getW());
+	public Vec4d(IVec4 vec) {
+		this(vec.xDouble(), vec.yDouble(), vec.zDouble(), vec.wDouble());
 	}
 	
 	@Override
@@ -259,6 +251,66 @@ public class Vec4d implements ICopyable<Vec4d>, IMath<Vec4d> {
 	@Override
 	public Vec4d copy() {
 		return new Vec4d(this);
+	}
+	
+	@Override
+	public int xInt() {
+		return Math.round(xFloat());
+	}
+	
+	@Override
+	public float xFloat() {
+		return (float) x;
+	}
+	
+	@Override
+	public double xDouble() {
+		return x;
+	}
+	
+	@Override
+	public int yInt() {
+		return Math.round(yFloat());
+	}
+	
+	@Override
+	public float yFloat() {
+		return (float) y;
+	}
+	
+	@Override
+	public double yDouble() {
+		return y;
+	}
+	
+	@Override
+	public int zInt() {
+		return Math.round(zFloat());
+	}
+	
+	@Override
+	public float zFloat() {
+		return (float) z;
+	}
+	
+	@Override
+	public double zDouble() {
+		return z;
+	}
+	
+	@Override
+	public int wInt() {
+		return Math.round(wFloat());
+	}
+	
+	@Override
+	public float wFloat() {
+		return (float) w;
+	}
+	
+	@Override
+	public double wDouble() {
+		return w;
 	}
 	
 	@Override

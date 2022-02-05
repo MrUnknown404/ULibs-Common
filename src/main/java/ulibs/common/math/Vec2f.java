@@ -5,7 +5,7 @@ import java.util.Objects;
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
-public class Vec2f implements ICopyable<Vec2f>, IMath<Vec2f> {
+public class Vec2f implements ICopyable<Vec2f>, IMath<Vec2f>, IVec2 {
 	protected float x, y;
 	
 	public Vec2f() {
@@ -23,16 +23,8 @@ public class Vec2f implements ICopyable<Vec2f>, IMath<Vec2f> {
 		this.y = xy;
 	}
 	
-	public Vec2f(Vec2i vec) {
-		this(vec.getX(), vec.getY());
-	}
-	
-	public Vec2f(Vec2f vec) {
-		this(vec.getX(), vec.getY());
-	}
-	
-	public Vec2f(Vec2d vec) {
-		this((float) vec.getX(), (float) vec.getY());
+	public Vec2f(IVec2 vec) {
+		this(vec.xFloat(), vec.yFloat());
 	}
 	
 	@Override
@@ -175,6 +167,36 @@ public class Vec2f implements ICopyable<Vec2f>, IMath<Vec2f> {
 	@Override
 	public Vec2f copy() {
 		return new Vec2f(this);
+	}
+	
+	@Override
+	public int xInt() {
+		return Math.round(x);
+	}
+	
+	@Override
+	public float xFloat() {
+		return x;
+	}
+	
+	@Override
+	public double xDouble() {
+		return x;
+	}
+	
+	@Override
+	public int yInt() {
+		return Math.round(y);
+	}
+	
+	@Override
+	public float yFloat() {
+		return y;
+	}
+	
+	@Override
+	public double yDouble() {
+		return y;
 	}
 	
 	@Override

@@ -5,7 +5,7 @@ import java.util.Objects;
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
-public class Vec2d implements ICopyable<Vec2d>, IMath<Vec2d> {
+public class Vec2d implements ICopyable<Vec2d>, IMath<Vec2d>, IVec2 {
 	protected double x, y;
 	
 	public Vec2d() {
@@ -23,16 +23,8 @@ public class Vec2d implements ICopyable<Vec2d>, IMath<Vec2d> {
 		this.y = xy;
 	}
 	
-	public Vec2d(Vec2i vec) {
-		this(vec.getX(), vec.getY());
-	}
-	
-	public Vec2d(Vec2f vec) {
-		this(vec.getX(), vec.getY());
-	}
-	
-	public Vec2d(Vec2d vec) {
-		this(vec.getX(), vec.getY());
+	public Vec2d(IVec2 vec) {
+		this(vec.xDouble(), vec.yDouble());
 	}
 	
 	@Override
@@ -175,6 +167,36 @@ public class Vec2d implements ICopyable<Vec2d>, IMath<Vec2d> {
 	@Override
 	public Vec2d copy() {
 		return new Vec2d(this);
+	}
+	
+	@Override
+	public int xInt() {
+		return Math.round(xFloat());
+	}
+	
+	@Override
+	public float xFloat() {
+		return (float) x;
+	}
+	
+	@Override
+	public double xDouble() {
+		return x;
+	}
+	
+	@Override
+	public int yInt() {
+		return Math.round(yFloat());
+	}
+	
+	@Override
+	public float yFloat() {
+		return (float) y;
+	}
+	
+	@Override
+	public double yDouble() {
+		return y;
 	}
 	
 	@Override
