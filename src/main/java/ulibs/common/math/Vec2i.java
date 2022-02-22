@@ -5,7 +5,7 @@ import java.util.Objects;
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
-public class Vec2i implements ICopyable<Vec2i>, IMath<Vec2i>, IVec2 {
+public class Vec2i implements ICopyable<Vec2i>, IVec<Vec2i, IVec2>, IVec2 {
 	protected int x, y;
 	
 	public Vec2i() {
@@ -28,9 +28,9 @@ public class Vec2i implements ICopyable<Vec2i>, IMath<Vec2i>, IVec2 {
 	}
 	
 	@Override
-	public Vec2i add(Vec2i vec) {
-		this.x += vec.x;
-		this.y += vec.y;
+	public Vec2i add(IVec2 vec) {
+		this.x += vec.xInt();
+		this.y += vec.yInt();
 		return this;
 	}
 	
@@ -51,9 +51,9 @@ public class Vec2i implements ICopyable<Vec2i>, IMath<Vec2i>, IVec2 {
 	}
 	
 	@Override
-	public Vec2i subtract(Vec2i vec) {
-		this.x -= vec.x;
-		this.y -= vec.y;
+	public Vec2i subtract(IVec2 vec) {
+		this.x -= vec.xInt();
+		this.y -= vec.yInt();
 		return this;
 	}
 	
@@ -74,9 +74,9 @@ public class Vec2i implements ICopyable<Vec2i>, IMath<Vec2i>, IVec2 {
 	}
 	
 	@Override
-	public Vec2i multiply(Vec2i vec) {
-		this.x *= vec.x;
-		this.y *= vec.y;
+	public Vec2i multiply(IVec2 vec) {
+		this.x *= vec.xInt();
+		this.y *= vec.yInt();
 		return this;
 	}
 	
@@ -97,9 +97,9 @@ public class Vec2i implements ICopyable<Vec2i>, IMath<Vec2i>, IVec2 {
 	}
 	
 	@Override
-	public Vec2i divide(Vec2i vec) {
-		this.x /= vec.x;
-		this.y /= vec.y;
+	public Vec2i divide(IVec2 vec) {
+		this.x /= vec.xInt();
+		this.y /= vec.yInt();
 		return this;
 	}
 	
@@ -120,9 +120,9 @@ public class Vec2i implements ICopyable<Vec2i>, IMath<Vec2i>, IVec2 {
 	}
 	
 	@Override
-	public Vec2i set(Vec2i vec) {
-		this.x = vec.x;
-		this.y = vec.y;
+	public Vec2i set(IVec2 vec) {
+		this.x = vec.xInt();
+		this.y = vec.yInt();
 		return this;
 	}
 	
@@ -151,12 +151,12 @@ public class Vec2i implements ICopyable<Vec2i>, IMath<Vec2i>, IVec2 {
 	}
 	
 	@Override
-	public Vec2i inverse() {
+	public Vec2i invert() {
 		return new Vec2i(-x, -y);
 	}
 	
-	public int difference(Vec2i vec) {
-		return Math.abs(x - vec.x) + Math.abs(y - vec.y);
+	public int difference(IVec2 vec) {
+		return Math.abs(x - vec.xInt()) + Math.abs(y - vec.yInt());
 	}
 	
 	@Override

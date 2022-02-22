@@ -5,10 +5,16 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
+/** A bunch of utility methods involving various collections
+ * @author -Unknown-
+ */
 public class CollectionsH {
+	/** Creates a new {@link ArrayList} with the provided size filled with the provided object
+	 * @param size The amount of objects to add to the list
+	 * @param e The object to fill the list with
+	 * @return A new list filled to the given size with object
+	 */
 	public static <E> List<E> fill(int size, E e) {
 		List<E> list = new ArrayList<E>();
 		for (int i = 0; i < size; i++) {
@@ -18,38 +24,39 @@ public class CollectionsH {
 		return list;
 	}
 	
+	/** Creates a new {@link ArrayList} with the same values of the provided list
+	 * @param list The list to copy
+	 * @return A new ArrayList with the same values of the given list
+	 */
 	public static <E> ArrayList<E> copyList(ArrayList<E> list) {
 		return new ArrayList<E>(list);
 	}
 	
-	public static <E> List<E> copyList(List<E> listToCopy, List<E> listToPaste) {
-		listToPaste.addAll(listToCopy);
-		return listToPaste;
-	}
-	
+	/** Creates a new {@link HashSet} with the same values of the provided set
+	 * @param set The set to copy
+	 * @return A new HashSet with the same values of the given set
+	 */
 	public static <E> HashSet<E> copySet(HashSet<E> set) {
 		return new HashSet<E>(set);
 	}
 	
-	public static <E> Set<E> copySet(Set<E> setToCopy, Set<E> setToPaste) {
-		setToPaste.addAll(setToCopy);
-		return setToPaste;
-	}
-	
+	/** Creates a new {@link HashMap} with the same values of the provided map
+	 * @param map The map to copy
+	 * @return A new HashMap with the same values of the given map
+	 */
 	public static <K, V> HashMap<K, V> copyMap(HashMap<K, V> map) {
 		HashMap<K, V> newMap = new HashMap<K, V>();
 		newMap.putAll(map);
 		return newMap;
 	}
 	
+	/** Creates a new {@link LinkedHashMap} with the same values of the provided map
+	 * @param map The map to copy
+	 * @return A new LinkedHashMap with the same values of the given map
+	 */
 	public static <K, V> LinkedHashMap<K, V> copyMap(LinkedHashMap<K, V> map) {
 		LinkedHashMap<K, V> newMap = new LinkedHashMap<K, V>();
 		newMap.putAll(map);
 		return newMap;
-	}
-	
-	public static <K, V> Map<K, V> copyMap(Map<K, V> mapToCopy, Map<K, V> mapToPaste) {
-		mapToPaste.putAll(mapToCopy);
-		return mapToPaste;
 	}
 }

@@ -5,7 +5,7 @@ import java.util.Objects;
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
-public class Vec4d implements ICopyable<Vec4d>, IMath<Vec4d>, IVec4 {
+public class Vec4d implements ICopyable<Vec4d>, IVec<Vec4d, IVec4>, IVec4 {
 	protected double x, y, z, w;
 	
 	public Vec4d() {
@@ -34,11 +34,11 @@ public class Vec4d implements ICopyable<Vec4d>, IMath<Vec4d>, IVec4 {
 	}
 	
 	@Override
-	public Vec4d add(Vec4d vec) {
-		this.x += vec.x;
-		this.y += vec.y;
-		this.z += vec.z;
-		this.w += vec.w;
+	public Vec4d add(IVec4 vec) {
+		this.x += vec.xDouble();
+		this.y += vec.yDouble();
+		this.z += vec.zDouble();
+		this.w += vec.wDouble();
 		return this;
 	}
 	
@@ -71,11 +71,11 @@ public class Vec4d implements ICopyable<Vec4d>, IMath<Vec4d>, IVec4 {
 	}
 	
 	@Override
-	public Vec4d subtract(Vec4d vec) {
-		this.x -= vec.x;
-		this.y -= vec.y;
-		this.z -= vec.z;
-		this.w -= vec.w;
+	public Vec4d subtract(IVec4 vec) {
+		this.x -= vec.xDouble();
+		this.y -= vec.yDouble();
+		this.z -= vec.zDouble();
+		this.w -= vec.wDouble();
 		return this;
 	}
 	
@@ -108,11 +108,11 @@ public class Vec4d implements ICopyable<Vec4d>, IMath<Vec4d>, IVec4 {
 	}
 	
 	@Override
-	public Vec4d multiply(Vec4d vec) {
-		this.x *= vec.x;
-		this.y *= vec.y;
-		this.z *= vec.z;
-		this.w *= vec.w;
+	public Vec4d multiply(IVec4 vec) {
+		this.x *= vec.xDouble();
+		this.y *= vec.yDouble();
+		this.z *= vec.zDouble();
+		this.w *= vec.wDouble();
 		return this;
 	}
 	
@@ -145,11 +145,11 @@ public class Vec4d implements ICopyable<Vec4d>, IMath<Vec4d>, IVec4 {
 	}
 	
 	@Override
-	public Vec4d divide(Vec4d vec) {
-		this.x /= vec.x;
-		this.y /= vec.y;
-		this.z /= vec.z;
-		this.w /= vec.w;
+	public Vec4d divide(IVec4 vec) {
+		this.x /= vec.xDouble();
+		this.y /= vec.yDouble();
+		this.z /= vec.zDouble();
+		this.w /= vec.wDouble();
 		return this;
 	}
 	
@@ -182,11 +182,11 @@ public class Vec4d implements ICopyable<Vec4d>, IMath<Vec4d>, IVec4 {
 	}
 	
 	@Override
-	public Vec4d set(Vec4d vec) {
-		this.x = vec.x;
-		this.y = vec.y;
-		this.z = vec.z;
-		this.w = vec.w;
+	public Vec4d set(IVec4 vec) {
+		this.x = vec.xDouble();
+		this.y = vec.yDouble();
+		this.z = vec.zDouble();
+		this.w = vec.wDouble();
 		return this;
 	}
 	
@@ -235,12 +235,12 @@ public class Vec4d implements ICopyable<Vec4d>, IMath<Vec4d>, IVec4 {
 	}
 	
 	@Override
-	public Vec4d inverse() {
+	public Vec4d invert() {
 		return new Vec4d(-x, -y, -z, -w);
 	}
 	
-	public double difference(Vec4d vec) {
-		return Math.abs(x - vec.x) + Math.abs(y - vec.y) + Math.abs(z - vec.z) + Math.abs(w - vec.w);
+	public double difference(IVec4 vec) {
+		return Math.abs(x - vec.xDouble()) + Math.abs(y - vec.yDouble()) + Math.abs(z - vec.zDouble()) + Math.abs(w - vec.wDouble());
 	}
 	
 	@Override

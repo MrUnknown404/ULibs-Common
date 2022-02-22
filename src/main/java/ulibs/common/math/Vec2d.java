@@ -5,7 +5,7 @@ import java.util.Objects;
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
-public class Vec2d implements ICopyable<Vec2d>, IMath<Vec2d>, IVec2 {
+public class Vec2d implements ICopyable<Vec2d>, IVec<Vec2d, IVec2>, IVec2 {
 	protected double x, y;
 	
 	public Vec2d() {
@@ -28,9 +28,9 @@ public class Vec2d implements ICopyable<Vec2d>, IMath<Vec2d>, IVec2 {
 	}
 	
 	@Override
-	public Vec2d add(Vec2d vec) {
-		this.x += vec.x;
-		this.y += vec.y;
+	public Vec2d add(IVec2 vec) {
+		this.x += vec.xDouble();
+		this.y += vec.yDouble();
 		return this;
 	}
 	
@@ -51,9 +51,9 @@ public class Vec2d implements ICopyable<Vec2d>, IMath<Vec2d>, IVec2 {
 	}
 	
 	@Override
-	public Vec2d subtract(Vec2d vec) {
-		this.x -= vec.x;
-		this.y -= vec.y;
+	public Vec2d subtract(IVec2 vec) {
+		this.x -= vec.xDouble();
+		this.y -= vec.yDouble();
 		return this;
 	}
 	
@@ -74,9 +74,9 @@ public class Vec2d implements ICopyable<Vec2d>, IMath<Vec2d>, IVec2 {
 	}
 	
 	@Override
-	public Vec2d multiply(Vec2d vec) {
-		this.x *= vec.x;
-		this.y *= vec.y;
+	public Vec2d multiply(IVec2 vec) {
+		this.x *= vec.xDouble();
+		this.y *= vec.yDouble();
 		return this;
 	}
 	
@@ -97,9 +97,9 @@ public class Vec2d implements ICopyable<Vec2d>, IMath<Vec2d>, IVec2 {
 	}
 	
 	@Override
-	public Vec2d divide(Vec2d vec) {
-		this.x /= vec.x;
-		this.y /= vec.y;
+	public Vec2d divide(IVec2 vec) {
+		this.x /= vec.xDouble();
+		this.y /= vec.yDouble();
 		return this;
 	}
 	
@@ -120,9 +120,9 @@ public class Vec2d implements ICopyable<Vec2d>, IMath<Vec2d>, IVec2 {
 	}
 	
 	@Override
-	public Vec2d set(Vec2d vec) {
-		this.x = vec.x;
-		this.y = vec.y;
+	public Vec2d set(IVec2 vec) {
+		this.x = vec.xDouble();
+		this.y = vec.yDouble();
 		return this;
 	}
 	
@@ -151,12 +151,12 @@ public class Vec2d implements ICopyable<Vec2d>, IMath<Vec2d>, IVec2 {
 	}
 	
 	@Override
-	public Vec2d inverse() {
+	public Vec2d invert() {
 		return new Vec2d(-x, -y);
 	}
 	
-	public double difference(Vec2d vec) {
-		return Math.abs(x - vec.x) + Math.abs(y - vec.y);
+	public double difference(IVec2 vec) {
+		return Math.abs(x - vec.xDouble()) + Math.abs(y - vec.yDouble());
 	}
 	
 	@Override

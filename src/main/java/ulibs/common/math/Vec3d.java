@@ -5,7 +5,7 @@ import java.util.Objects;
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
-public class Vec3d implements ICopyable<Vec3d>, IMath<Vec3d>, IVec3 {
+public class Vec3d implements ICopyable<Vec3d>, IVec<Vec3d, IVec3>, IVec3 {
 	protected double x, y, z;
 	
 	public Vec3d() {
@@ -31,10 +31,10 @@ public class Vec3d implements ICopyable<Vec3d>, IMath<Vec3d>, IVec3 {
 	}
 	
 	@Override
-	public Vec3d add(Vec3d vec) {
-		this.x += vec.x;
-		this.y += vec.y;
-		this.z += vec.z;
+	public Vec3d add(IVec3 vec) {
+		this.x += vec.xDouble();
+		this.y += vec.yDouble();
+		this.z += vec.zDouble();
 		return this;
 	}
 	
@@ -61,10 +61,10 @@ public class Vec3d implements ICopyable<Vec3d>, IMath<Vec3d>, IVec3 {
 	}
 	
 	@Override
-	public Vec3d subtract(Vec3d vec) {
-		this.x -= vec.x;
-		this.y -= vec.y;
-		this.z -= vec.z;
+	public Vec3d subtract(IVec3 vec) {
+		this.x -= vec.xDouble();
+		this.y -= vec.yDouble();
+		this.z -= vec.zDouble();
 		return this;
 	}
 	
@@ -91,10 +91,10 @@ public class Vec3d implements ICopyable<Vec3d>, IMath<Vec3d>, IVec3 {
 	}
 	
 	@Override
-	public Vec3d multiply(Vec3d vec) {
-		this.x *= vec.x;
-		this.y *= vec.y;
-		this.z *= vec.z;
+	public Vec3d multiply(IVec3 vec) {
+		this.x *= vec.xDouble();
+		this.y *= vec.yDouble();
+		this.z *= vec.zDouble();
 		return this;
 	}
 	
@@ -121,10 +121,10 @@ public class Vec3d implements ICopyable<Vec3d>, IMath<Vec3d>, IVec3 {
 	}
 	
 	@Override
-	public Vec3d divide(Vec3d vec) {
-		this.x /= vec.x;
-		this.y /= vec.y;
-		this.z /= vec.z;
+	public Vec3d divide(IVec3 vec) {
+		this.x /= vec.xDouble();
+		this.y /= vec.yDouble();
+		this.z /= vec.zDouble();
 		return this;
 	}
 	
@@ -151,10 +151,10 @@ public class Vec3d implements ICopyable<Vec3d>, IMath<Vec3d>, IVec3 {
 	}
 	
 	@Override
-	public Vec3d set(Vec3d vec) {
-		this.x = vec.x;
-		this.y = vec.y;
-		this.z = vec.z;
+	public Vec3d set(IVec3 vec) {
+		this.x = vec.xDouble();
+		this.y = vec.yDouble();
+		this.z = vec.zDouble();
 		return this;
 	}
 	
@@ -193,12 +193,12 @@ public class Vec3d implements ICopyable<Vec3d>, IMath<Vec3d>, IVec3 {
 	}
 	
 	@Override
-	public Vec3d inverse() {
+	public Vec3d invert() {
 		return new Vec3d(-x, -y, -z);
 	}
 	
-	public double difference(Vec3d vec) {
-		return Math.abs(x - vec.x) + Math.abs(y - vec.y) + Math.abs(z - vec.z);
+	public double difference(IVec3 vec) {
+		return Math.abs(x - vec.xDouble()) + Math.abs(y - vec.yDouble()) + Math.abs(z - vec.zDouble());
 	}
 	
 	@Override

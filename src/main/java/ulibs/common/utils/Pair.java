@@ -6,7 +6,11 @@ public class Pair<L, R> {
 	private L left;
 	private R right;
 	
-	public Pair(L left, R right) {
+	public static <L, R> Pair<L, R> of(L l, R r) {
+		return new Pair<L, R>(l, r);
+	}
+	
+	private Pair(L left, R right) {
 		this.left = left;
 		this.right = right;
 	}

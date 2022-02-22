@@ -23,10 +23,13 @@ public final class Console {
 	
 	private static PrintWriter prt;
 	
+	/** Whether or not to add debug information */
+	public static boolean enabledHeader = true;
+	
 	/** Whether or not to show the thread in the debug information */
 	public static boolean showThread;
 	
-	/** Anything in this area will not be printed to log or console! */
+	/** Anything in this array will not be printed to log or console! */
 	public static WarningType[] disabledTypes = { WarningType.RegisterDebug, WarningType.TextureDebug, WarningType.Debug };
 	
 	/** Sets up a {@link PrintWriter} to save the console output to file.
@@ -173,8 +176,10 @@ public final class Console {
 	}
 	
 	private static String getHeader(WarningType type) {
-		return "[" + new SimpleDateFormat("hh:mm:ss:SSS").format(new Date()) + "]" + (showThread ? " [T/" + Thread.currentThread().getName() + "] " : " ") + "[" +
-				type.toString() + "] [" + getCallerInfo(Console.class) + "] : ";
+		return enabledHeader ?
+				"[" + new SimpleDateFormat("hh:mm:ss:SSS").format(new Date()) + "]" + (showThread ? " [T/" + Thread.currentThread().getName() + "] " : " ") + "[" +
+						type.toString() + "] [" + getCallerInfo(Console.class) + "] : " :
+				"";
 	}
 	
 	private static String getCallerInfo(Class<?> clazz) {

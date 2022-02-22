@@ -5,7 +5,7 @@ import java.util.Objects;
 import main.java.ulibs.common.utils.ICopyable;
 
 @SuppressWarnings("javadoc")
-public class Vec3f implements ICopyable<Vec3f>, IMath<Vec3f>, IVec3 {
+public class Vec3f implements ICopyable<Vec3f>, IVec<Vec3f, IVec3>, IVec3 {
 	protected float x, y, z;
 	
 	public Vec3f() {
@@ -31,10 +31,10 @@ public class Vec3f implements ICopyable<Vec3f>, IMath<Vec3f>, IVec3 {
 	}
 	
 	@Override
-	public Vec3f add(Vec3f vec) {
-		this.x += vec.x;
-		this.y += vec.y;
-		this.z += vec.z;
+	public Vec3f add(IVec3 vec) {
+		this.x += vec.xFloat();
+		this.y += vec.yFloat();
+		this.z += vec.zFloat();
 		return this;
 	}
 	
@@ -61,10 +61,10 @@ public class Vec3f implements ICopyable<Vec3f>, IMath<Vec3f>, IVec3 {
 	}
 	
 	@Override
-	public Vec3f subtract(Vec3f vec) {
-		this.x -= vec.x;
-		this.y -= vec.y;
-		this.z -= vec.z;
+	public Vec3f subtract(IVec3 vec) {
+		this.x -= vec.xFloat();
+		this.y -= vec.yFloat();
+		this.z -= vec.zFloat();
 		return this;
 	}
 	
@@ -91,10 +91,10 @@ public class Vec3f implements ICopyable<Vec3f>, IMath<Vec3f>, IVec3 {
 	}
 	
 	@Override
-	public Vec3f multiply(Vec3f vec) {
-		this.x *= vec.x;
-		this.y *= vec.y;
-		this.z *= vec.z;
+	public Vec3f multiply(IVec3 vec) {
+		this.x *= vec.xFloat();
+		this.y *= vec.yFloat();
+		this.z *= vec.zFloat();
 		return this;
 	}
 	
@@ -121,10 +121,10 @@ public class Vec3f implements ICopyable<Vec3f>, IMath<Vec3f>, IVec3 {
 	}
 	
 	@Override
-	public Vec3f divide(Vec3f vec) {
-		this.x /= vec.x;
-		this.y /= vec.y;
-		this.z /= vec.z;
+	public Vec3f divide(IVec3 vec) {
+		this.x /= vec.xFloat();
+		this.y /= vec.yFloat();
+		this.z /= vec.zFloat();
 		return this;
 	}
 	
@@ -151,10 +151,10 @@ public class Vec3f implements ICopyable<Vec3f>, IMath<Vec3f>, IVec3 {
 	}
 	
 	@Override
-	public Vec3f set(Vec3f vec) {
-		this.x = vec.x;
-		this.y = vec.y;
-		this.z = vec.z;
+	public Vec3f set(IVec3 vec) {
+		this.x = vec.xFloat();
+		this.y = vec.yFloat();
+		this.z = vec.zFloat();
 		return this;
 	}
 	
@@ -193,12 +193,12 @@ public class Vec3f implements ICopyable<Vec3f>, IMath<Vec3f>, IVec3 {
 	}
 	
 	@Override
-	public Vec3f inverse() {
+	public Vec3f invert() {
 		return new Vec3f(-x, -y, -z);
 	}
 	
-	public float difference(Vec3f vec) {
-		return Math.abs(x - vec.x) + Math.abs(y - vec.y) + Math.abs(z - vec.z);
+	public float difference(IVec3 vec) {
+		return Math.abs(x - vec.xFloat()) + Math.abs(y - vec.yFloat()) + Math.abs(z - vec.zFloat());
 	}
 	
 	@Override
