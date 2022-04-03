@@ -26,13 +26,11 @@ public class Pair<L, R> {
 	}
 	
 	public Pair<L, R> setLeft(L left) {
-		this.left = left;
-		return this;
+		return setL(left);
 	}
 	
 	public Pair<L, R> setRight(R right) {
-		this.right = right;
-		return this;
+		return setR(right);
 	}
 	
 	public L getL() {
@@ -44,11 +42,11 @@ public class Pair<L, R> {
 	}
 	
 	public L getLeft() {
-		return left;
+		return getL();
 	}
 	
 	public R getRight() {
-		return right;
+		return getR();
 	}
 	
 	@Override
