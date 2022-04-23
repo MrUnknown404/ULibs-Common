@@ -8,7 +8,7 @@ public class WordH {
 			if (!isPrevSplit && Character.isLetter(chars[i])) {
 				chars[i] = Character.toUpperCase(chars[i]);
 				isPrevSplit = true;
-			} else if (Character.isWhitespace(chars[i]) || chars[i] == '.' || chars[i] == '\'' || chars[i] == '-') {
+			} else if (Character.isWhitespace(chars[i]) || chars[i] == '.' || chars[i] == '\'' || chars[i] == '-' || chars[i] == '_') {
 				isPrevSplit = false;
 			}
 		}

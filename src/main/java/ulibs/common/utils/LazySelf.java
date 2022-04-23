@@ -13,4 +13,8 @@ public final class LazySelf<S, R> {
 	public R apply(S obj) {
 		return value == null ? (value = func.apply(obj)) : value;
 	}
+	
+	public void set(R value) {
+		this.value = value;
+	}
 }

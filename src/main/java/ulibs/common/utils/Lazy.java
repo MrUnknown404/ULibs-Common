@@ -13,4 +13,8 @@ public final class Lazy<R> {
 	public R get() {
 		return value == null ? (value = sup.get()) : value;
 	}
+	
+	public void set(R value) {
+		this.value = value;
+	}
 }
