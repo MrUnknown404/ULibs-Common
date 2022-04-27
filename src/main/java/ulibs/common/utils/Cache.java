@@ -4,9 +4,18 @@ public class Cache<K, V> {
 	protected K key;
 	protected V value;
 	
-	public void set(K key, V value) {
+	private Cache() {
+		
+	}
+	
+	public static <K, V> Cache<K, V> create() {
+		return new Cache<K, V>();
+	}
+	
+	public V set(K key, V value) {
 		this.key = key;
 		this.value = value;
+		return value;
 	}
 	
 	public boolean isEmpty() {

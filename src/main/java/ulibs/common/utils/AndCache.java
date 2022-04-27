@@ -1,33 +1,34 @@
 package main.java.ulibs.common.utils;
 
-public class AndCache<K0, K1, V> extends Cache<K0, V> {
+public class AndCache<K0, K1, V> {
+	protected K0 key0;
 	protected K1 key1;
+	protected V value;
 	
-	public void set(K0 key0, K1 key1, V value) {
-		super.set(key0, value);
-		this.key1 = key1;
-	}
-	
-	@Override
-	public boolean isEmpty() {
-		return super.isEmpty() && key1 == null;
-	}
-	
-	public boolean is(K0 key0, K1 key1) {
-		return (this.key == key0 || (this.key != null && this.key.equals(key0))) && (this.key1 == key1 || (this.key1 != null && this.key1.equals(key1)));
-	}
-	
-	/** Use {@link #set(Object, Object, Object)} instead */
-	@Deprecated
-	@Override
-	public void set(K0 key, V value) {
+	private AndCache() {
 		
 	}
 	
-	/** Use {@link #is(Object, Object)} instead */
-	@Deprecated
-	@Override
-	public boolean is(K0 key) {
-		return false;
+	public static <K0, K1, V> AndCache<K0, K1, V> create() {
+		return new AndCache<K0, K1, V>();
+	}
+	
+	public V set(K0 key0, K1 key1, V value) {
+		this.key0 = key0;
+		this.key1 = key1;
+		this.value = value;
+		return value;
+	}
+	
+	public boolean isEmpty() {
+		return key0 == null && key1 == null;
+	}
+	
+	public boolean is(K0 key0, K1 key1) {
+		return (this.key0 == key0 || (this.key0 != null && this.key0.equals(key0))) && (this.key1 == key1 || (this.key1 != null && this.key1.equals(key1)));
+	}
+	
+	public V get() {
+		return value;
 	}
 }
