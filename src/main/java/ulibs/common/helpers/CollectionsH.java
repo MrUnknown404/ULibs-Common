@@ -1,6 +1,7 @@
 package main.java.ulibs.common.helpers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -58,5 +59,21 @@ public class CollectionsH {
 		LinkedHashMap<K, V> newMap = new LinkedHashMap<K, V>();
 		newMap.putAll(map);
 		return newMap;
+	}
+	
+	public static <T> List<T> toList(T[] toAdd) {
+		List<T> list = new ArrayList<T>();
+		for (T w : toAdd) {
+			list.add(w);
+		}
+		return list;
+	}
+	
+	public static <T> List<T> toList(T toAdd, T[] toAdds) {
+		List<T> list = new ArrayList<T>(Arrays.asList(toAdd));
+		for (T w : toAdds) {
+			list.add(w);
+		}
+		return list;
 	}
 }
