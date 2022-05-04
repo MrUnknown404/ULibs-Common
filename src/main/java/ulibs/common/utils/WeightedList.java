@@ -1,9 +1,10 @@
 package main.java.ulibs.common.utils;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class WeightedList<T> {
+public class WeightedList<T> implements Iterable<Pair<T, Integer>> {
 	protected final List<Pair<T, Integer>> list = new ArrayList<Pair<T, Integer>>();
 	protected int totalWeight;
 	
@@ -39,5 +40,11 @@ public class WeightedList<T> {
 	/** @see List#clear() */
 	public void clear() {
 		list.clear();
+	}
+	
+	/** @see List#iterator() */
+	@Override
+	public Iterator<Pair<T, Integer>> iterator() {
+		return list.iterator();
 	}
 }
