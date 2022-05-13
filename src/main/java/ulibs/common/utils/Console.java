@@ -192,7 +192,12 @@ public final class Console {
 					className = className.substring(0, className.indexOf("$"));
 				}
 				
-				return (className + "." + ste.getMethodName() + "." + ste.getLineNumber()).replace("$", ".").replace("<", "").replace(">", "");
+				String methodName = ste.getMethodName();
+				if (methodName.contains("$")) {
+					methodName = methodName.substring(0, methodName.indexOf("$"));
+				}
+				
+				return (className + "." + methodName + "." + ste.getLineNumber()).replace("$", ".").replace("<", "").replace(">", "");
 			}
 		}
 		
