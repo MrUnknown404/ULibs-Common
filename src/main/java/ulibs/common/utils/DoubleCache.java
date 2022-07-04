@@ -29,6 +29,13 @@ public class DoubleCache<K0, K1, V> {
 		return value;
 	}
 	
+	public V setIfDifferent(K0 key0, K1 key1, V value) {
+		if (!is(key0, key1)) {
+			return set(key0, key1, value);
+		}
+		return value;
+	}
+	
 	public boolean isEmpty() {
 		return key0 == null && key1 == null;
 	}
