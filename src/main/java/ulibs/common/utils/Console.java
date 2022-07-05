@@ -56,7 +56,7 @@ public final class Console {
 					try {
 						sdf.parse(f.getName().substring(4, f.getName().length() - 4));
 						curAmount++;
-					} catch (ParseException e) {
+					} catch (@SuppressWarnings("unused") ParseException e) {
 						continue;
 					}
 				}
@@ -77,7 +77,7 @@ public final class Console {
 								} else {
 									oldest = f;
 								}
-							} catch (ParseException e) {
+							} catch (@SuppressWarnings("unused") ParseException e) {
 								continue;
 							}
 						} else {
@@ -93,7 +93,7 @@ public final class Console {
 							try {
 								sdf.parse(f.getName().substring(4, f.getName().length() - 4));
 								curAmount++;
-							} catch (ParseException e) {
+							} catch (@SuppressWarnings("unused") ParseException e) {
 								continue;
 							}
 						}
@@ -121,8 +121,8 @@ public final class Console {
 	
 	/** Prints date info to the console Example: <p> [12:34:56:789] [Info] [ExampleClass.exampleMethod.69] [Hour/Minute/Second/Millisecond] */
 	public static void getTimeExample() {
-		String msg = "[" + new SimpleDateFormat("hh:mm:ss:SSS").format(new Date()) + "]" + (showThread ? " [T/" + Thread.currentThread().getName() + "] " : " ") + "[" +
-				WarningType.Info + "] [" + getCallerInfo(Console.class) + "] [Hour/Minute/Second/Millisecond]";
+		String msg = "[" + new SimpleDateFormat("hh:mm:ss:SSS").format(new Date()) + "]" + (showThread ? " [T/" + Thread.currentThread().getName() + "] " : " ") +
+				"[" + WarningType.Info + "] [" + getCallerInfo(Console.class) + "] [Hour/Minute/Second/Millisecond]";
 		
 		System.out.println(msg);
 	}
