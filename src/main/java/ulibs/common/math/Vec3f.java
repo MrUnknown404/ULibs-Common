@@ -258,8 +258,8 @@ public class Vec3f implements ICopyable<Vec3f>, IVec<Vec3f, IVec3>, IVec3 {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof Vec3f) {
-			if (((Vec3f) obj).x == x && ((Vec3f) obj).y == y && ((Vec3f) obj).z == z) {
+		if (obj instanceof Vec3f obj0) {
+			if (obj0.x == x && obj0.y == y && obj0.z == z) {
 				return true;
 			}
 		}

@@ -56,31 +56,25 @@ public class Pair<L, R> {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this != obj || obj == null) {
+			return false;
+		} else if (obj instanceof Pair<?, ?> obj0) {
+			if (left == null && obj0.left != null) {
+				return false;
+			} else if (!left.equals(obj0.left)) {
+				return false;
+			}
+			
+			if (right == null && obj0.right != null) {
+				return false;
+			} else if (!right.equals(obj0.right)) {
+				return false;
+			}
+			
 			return true;
 		}
-		if (obj == null || !(obj instanceof Pair)) {
-			return false;
-		}
 		
-		Pair<?, ?> other = (Pair<?, ?>) obj;
-		if (left == null) {
-			if (other.left != null) {
-				return false;
-			}
-		} else if (!left.equals(other.left)) {
-			return false;
-		}
-		
-		if (right == null) {
-			if (other.right != null) {
-				return false;
-			}
-		} else if (!right.equals(other.right)) {
-			return false;
-		}
-		
-		return true;
+		return false;
 	}
 	
 	@Override

@@ -201,8 +201,8 @@ public class Vec2i implements ICopyable<Vec2i>, IVec<Vec2i, IVec2>, IVec2 {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof Vec2i) {
-			if (((Vec2i) obj).x == x && ((Vec2i) obj).y == y) {
+		if (obj instanceof Vec2i obj0) {
+			if (obj0.x == x && obj0.y == y) {
 				return true;
 			}
 		}

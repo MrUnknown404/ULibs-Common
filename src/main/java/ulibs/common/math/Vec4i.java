@@ -315,8 +315,8 @@ public class Vec4i implements ICopyable<Vec4i>, IVec<Vec4i, IVec4>, IVec4 {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof Vec4i) {
-			if (((Vec4i) obj).x == x && ((Vec4i) obj).y == y && ((Vec4i) obj).z == z && ((Vec4i) obj).w == w) {
+		if (obj instanceof Vec4i obj0) {
+			if (obj0.x == x && obj0.y == y && obj0.z == z && obj0.w == w) {
 				return true;
 			}
 		}
