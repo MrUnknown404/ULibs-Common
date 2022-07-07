@@ -77,8 +77,9 @@ public class Grid<T> {
 	 */
 	public T get(int x, int y) {
 		try {
-			return checkValid(x, y) ? grid.get(x + (y * width)) : null;
-		} catch (Exception e) {
+			checkValid(x, y);
+			return grid.get(x + (y * width));
+		} catch (GridException e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -115,10 +116,9 @@ public class Grid<T> {
 	 */
 	public Grid<T> set(T t, int x, int y) {
 		try {
-			if (checkValid(x, y)) {
-				grid.set(y * width + x, t);
-			}
-		} catch (Exception e) {
+			checkValid(x, y);
+			grid.set(y * width + x, t);
+		} catch (GridException e) {
 			e.printStackTrace();
 		}
 		
@@ -140,10 +140,9 @@ public class Grid<T> {
 	 */
 	public Grid<T> remove(int x, int y) {
 		try {
-			if (checkValid(x, y)) {
-				grid.set(y * width + x, null);
-			}
-		} catch (Exception e) {
+			checkValid(x, y);
+			grid.set(y * width + x, null);
+		} catch (GridException e) {
 			e.printStackTrace();
 		}
 		
@@ -197,22 +196,16 @@ public class Grid<T> {
 		return null;
 	}
 	
-	private boolean checkValid(int x, int y) throws Exception {
+	private void checkValid(int x, int y) throws GridException {
 		if (x < 0) {
-			Console.print(WarningType.Error, "'X' Cannot be lower than 0! (was " + x + ")", new GridException(this, Reason.lowX, x));
-			return false;
+			throw Console.print(WarningType.Error, "'X' Cannot be lower than 0! (was " + x + ")", new GridException(this, Reason.lowX, x));
 		} else if (x >= width) {
-			Console.print(WarningType.Error, "'X' Cannot be " + width + " or above! (was " + x + ")", new GridException(this, Reason.highX, x));
-			return false;
+			throw Console.print(WarningType.Error, "'X' Cannot be " + width + " or above! (was " + x + ")", new GridException(this, Reason.highX, x));
 		} else if (y < 0) {
-			Console.print(WarningType.Error, "'Y' Cannot be lower than 0! (was " + y + ")", new GridException(this, Reason.lowY, y));
-			return false;
+			throw Console.print(WarningType.Error, "'Y' Cannot be lower than 0! (was " + y + ")", new GridException(this, Reason.lowY, y));
 		} else if (y >= height) {
-			Console.print(WarningType.Error, "'Y' Cannot be " + height + " or above! (was " + y + ")", new GridException(this, Reason.highY, y));
-			return false;
+			throw Console.print(WarningType.Error, "'Y' Cannot be " + height + " or above! (was " + y + ")", new GridException(this, Reason.highY, y));
 		}
-		
-		return true;
 	}
 	
 	/** @return Returns the grid's size */

@@ -126,11 +126,9 @@ public class MathH {
 	 */
 	public static double normalize(double number, double min, double max) {
 		if (number > max) {
-			Console.print(Console.WarningType.Error, "the specified number is more than the specified max!", new Exception());
-			return max;
+			throw Console.print(Console.WarningType.Error, "the specified number is more than the specified max!", new IllegalArgumentException());
 		} else if (number < min) {
-			Console.print(Console.WarningType.Error, "the specified number cannot be less than the specified min!", new Exception());
-			return 0;
+			throw Console.print(Console.WarningType.Error, "the specified number cannot be less than the specified min!", new IllegalArgumentException());
 		}
 		
 		return (number - min) / (max - min);
@@ -144,11 +142,9 @@ public class MathH {
 	 */
 	public static float normalize(float number, float min, float max) {
 		if (number > max) {
-			Console.print(Console.WarningType.Error, "the specified number is more than the specified max!", new Exception());
-			return max;
+			throw Console.print(Console.WarningType.Error, "the specified number is more than the specified max!", new IllegalArgumentException());
 		} else if (number < min) {
-			Console.print(Console.WarningType.Error, "the specified number cannot be less than the specified min!", new Exception());
-			return 0;
+			throw Console.print(Console.WarningType.Error, "the specified number cannot be less than the specified min!", new IllegalArgumentException());
 		}
 		
 		return (number - min) / (max - min);
@@ -162,11 +158,9 @@ public class MathH {
 	 */
 	public static float normalize(int number, int min, int max) {
 		if (number > max) {
-			Console.print(Console.WarningType.Error, "the specified number is more than the specified max!", new Exception());
-			return max;
+			throw Console.print(Console.WarningType.Error, "the specified number is more than the specified max!", new IllegalArgumentException());
 		} else if (number < min) {
-			Console.print(Console.WarningType.Error, "the specified number cannot be less than the specified min!", new Exception());
-			return 0;
+			throw Console.print(Console.WarningType.Error, "the specified number cannot be less than the specified min!", new IllegalArgumentException());
 		}
 		
 		return (float) (number - min) / (float) (max - min);
@@ -180,11 +174,9 @@ public class MathH {
 	 */
 	public static double normalize(long number, long min, long max) {
 		if (number > max) {
-			Console.print(Console.WarningType.Error, "the specified number is more than the specified max!", new Exception());
-			return max;
+			throw Console.print(Console.WarningType.Error, "the specified number is more than the specified max!", new IllegalArgumentException());
 		} else if (number < min) {
-			Console.print(Console.WarningType.Error, "the specified number cannot be less than the specified min!", new Exception());
-			return 0;
+			throw Console.print(Console.WarningType.Error, "the specified number cannot be less than the specified min!", new IllegalArgumentException());
 		}
 		
 		return (double) (number - min) / (double) (max - min);

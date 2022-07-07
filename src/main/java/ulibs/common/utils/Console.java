@@ -121,8 +121,8 @@ public final class Console {
 	
 	/** Prints date info to the console Example: <p> [12:34:56:789] [Info] [ExampleClass.exampleMethod.69] [Hour/Minute/Second/Millisecond] */
 	public static void getTimeExample() {
-		String msg = "[" + new SimpleDateFormat("hh:mm:ss:SSS").format(new Date()) + "]" + (showThread ? " [T/" + Thread.currentThread().getName() + "] " : " ") +
-				"[" + WarningType.Info + "] [" + getCallerInfo(Console.class) + "] [Hour/Minute/Second/Millisecond]";
+		String msg = "[" + new SimpleDateFormat("hh:mm:ss:SSS").format(new Date()) + "]" + (showThread ? " [T/" + Thread.currentThread().getName() + "] " : " ") + "[" +
+				WarningType.Info + "] [" + getCallerInfo(Console.class) + "] [Hour/Minute/Second/Millisecond]";
 		
 		System.out.println(msg);
 	}
@@ -130,17 +130,18 @@ public final class Console {
 	/** Prints date info plus the given string to the console Example: <p> [12:34:56:789] [Debug] [ExampleClass.exampleMethod.69] : Hello! 
 	 * @param type The type of warning to display. Defaults to {@link WarningType#Debug} if null
 	 * @param string The string to print
-	 * @param e {@link Exception} to throw
+	 * @param e {@link Exception} to return if provided
+	 * @return The same exception for easier throwing
 	 */
-	public static void print(WarningType type, String string, Exception e) {
+	public static <T extends Exception> T print(WarningType type, String string, T e) {
 		if (type == null) {
 			System.out.println(getHeader(WarningType.Debug) + string);
-			return;
+			return e;
 		}
 		
 		for (WarningType t : disabledTypes) {
 			if (t == type) {
-				return;
+				return e;
 			}
 		}
 		
@@ -150,13 +151,7 @@ public final class Console {
 			System.out.println(getHeader(type) + string);
 		}
 		
-		if (e != null) {
-			try {
-				throw e;
-			} catch (Exception e0) {
-				e0.printStackTrace();
-			}
-		}
+		return e;
 	}
 	
 	/** Prints date info plus the given string to the console Example: <p> [12:34:56:789] [Debug] [ExampleClass.exampleMethod.69] : Hello!
