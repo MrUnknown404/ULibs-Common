@@ -1,5 +1,7 @@
 package main.java.ulibs.common.utils;
 
+import java.util.function.Supplier;
+
 public class Cache<K, V> {
 	protected K key;
 	protected V value;
@@ -7,6 +9,10 @@ public class Cache<K, V> {
 	
 	private Cache(CachePredicate<K> isPredicate) {
 		this.isPredicate = isPredicate;
+	}
+	
+	public static <K, V> Cache<K, V> create(CachePredicate<K> isPredicate) {
+		return new Cache<K, V>(isPredicate);
 	}
 	
 	public static <K, V> Cache<K, V> create() {
@@ -19,11 +25,8 @@ public class Cache<K, V> {
 		return value;
 	}
 	
-	public V setIfDifferent(K key, V value) {
-		if (!is(key)) {
-			return set(key, value);
-		}
-		return value;
+	public V computeIfAbsent(K key, Supplier<V> value) {
+		return is(key) ? this.value : set(key, value.get());
 	}
 	
 	public boolean isEmpty() {

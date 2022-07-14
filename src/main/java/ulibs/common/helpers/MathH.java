@@ -217,44 +217,4 @@ public class MathH {
 	public static double percentage(long number, long max) {
 		return ((double) number / (double) max) * 100d;
 	}
-	
-	/**
-	 * @param value The number to use
-	 * @param min The minimum number
-	 * @param max The maximum number
-	 * @return True if given number is within the given minimum & maximum. Otherwise false. <br> {@code value >= min && value <= max}
-	 */
-	public static boolean within(double value, double min, double max) {
-		return value >= min && value <= max;
-	}
-	
-	/**
-	 * @param value The number to use
-	 * @param min The minimum number
-	 * @param max The maximum number
-	 * @return True if given number is within the given minimum & maximum. Otherwise false. <br> {@code value >= min && value <= max}
-	 */
-	public static boolean within(float value, float min, float max) {
-		return value >= min && value <= max;
-	}
-	
-	/**
-	 * @param value The number to use
-	 * @param min The minimum number
-	 * @param max The maximum number
-	 * @return True if given number is within the given minimum & maximum. Otherwise false. <br> {@code value >= min && value <= max}
-	 */
-	public static boolean within(int value, int min, int max) {
-		return value >= min && value <= max;
-	}
-	
-	/**
-	 * @param value The number to use
-	 * @param min The minimum number
-	 * @param max The maximum number
-	 * @return True if given number is within the given minimum & maximum. Otherwise false. <br> {@code value >= min && value <= max}
-	 */
-	public static boolean within(long value, long min, long max) {
-		return value >= min && value <= max;
-	}
 }

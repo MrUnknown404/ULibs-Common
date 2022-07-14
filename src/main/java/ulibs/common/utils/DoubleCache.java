@@ -1,5 +1,7 @@
 package main.java.ulibs.common.utils;
 
+import java.util.function.Supplier;
+
 public class DoubleCache<K0, K1, V> {
 	protected K0 key0;
 	protected K1 key1;
@@ -15,11 +17,13 @@ public class DoubleCache<K0, K1, V> {
 	}
 	
 	public static <K0, K1, V> DoubleCache<K0, K1, V> and() {
-		return create((okey0, okey1, key0, key1) -> (okey0 == key0 || (okey0 != null && okey0.equals(key0))) && (okey1 == key1 || (okey1 != null && okey1.equals(key1))));
+		return new DoubleCache<K0, K1, V>(
+				(okey0, okey1, key0, key1) -> (okey0 == key0 || (okey0 != null && okey0.equals(key0))) && (okey1 == key1 || (okey1 != null && okey1.equals(key1))));
 	}
 	
 	public static <K0, K1, V> DoubleCache<K0, K1, V> or() {
-		return create((okey0, okey1, key0, key1) -> (okey0 == key0 || (okey0 != null && okey0.equals(key0))) || (okey1 == key1 || (okey1 != null && okey1.equals(key1))));
+		return new DoubleCache<K0, K1, V>(
+				(okey0, okey1, key0, key1) -> (okey0 == key0 || (okey0 != null && okey0.equals(key0))) || (okey1 == key1 || (okey1 != null && okey1.equals(key1))));
 	}
 	
 	public V set(K0 key0, K1 key1, V value) {
@@ -29,11 +33,8 @@ public class DoubleCache<K0, K1, V> {
 		return value;
 	}
 	
-	public V setIfDifferent(K0 key0, K1 key1, V value) {
-		if (!is(key0, key1)) {
-			return set(key0, key1, value);
-		}
-		return value;
+	public V computeIfAbsent(K0 key0, K1 key1, Supplier<V> value) {
+		return is(key0, key1) ? this.value : set(key0, key1, value.get());
 	}
 	
 	public boolean isEmpty() {
