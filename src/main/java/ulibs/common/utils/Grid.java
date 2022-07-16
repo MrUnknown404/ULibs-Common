@@ -158,7 +158,7 @@ public class Grid<T> {
 			return false;
 		}
 		
-		for (int y = 0; y < width; y++) {
+		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
 				T g0 = get(x, y), g1 = g.get(x, y);
 				if (g0 == g1 || (g0 != null && g0.equals(g1))) {
